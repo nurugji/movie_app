@@ -4,25 +4,19 @@ class App extends React.Component {
   state = {
     count: 0,
   };
-  add = function () {
-    console.log("add");
+  add = () => {
+    this.setState((current) => ({
+      count: current.count + 1,
+    }));
   };
-  minus = function () {
-    console.log("minus");
+  minus = () => {
+    this.setState({ count: this.state.count - 1 });
   };
   render() {
     return (
       <div>
         <h1>This is number : {this.state.count}</h1>
-        <button
-          onClick={function (event) {
-            event.preventDefault();
-            console.log(this);
-            this.add();
-          }.bind(this)}
-        >
-          Add
-        </button>
+        <button onClick={this.add}>Add</button>
         <button onClick={this.minus}>Minus</button>
       </div>
     );
