@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends React.Component {
+  state = {
+    count: 0,
+  };
+  add = function () {
+    console.log("add");
+  };
+  minus = function () {
+    console.log("minus");
+  };
+  render() {
+    return (
+      <div>
+        <h1>This is number : {this.state.count}</h1>
+        <button
+          onClick={function (event) {
+            event.preventDefault();
+            console.log(this);
+            this.add();
+          }.bind(this)}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Add
+        </button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
